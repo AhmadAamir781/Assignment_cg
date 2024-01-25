@@ -1,6 +1,4 @@
 from django.contrib import admin
-from .models import CustomUser,Transactions,StockData
+from .models import CustomUser
 # Register your models here.
 admin.site.register(CustomUser)
-admin.site.register(Transactions)
-admin.site.register(StockData)
