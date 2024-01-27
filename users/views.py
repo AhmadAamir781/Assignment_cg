@@ -12,6 +12,7 @@ class CreateUserView(APIView):
     def post(self, request):
         # Deserialize and validate user data
         serializer = UserSerializer(data=request.data)
+        
         if serializer.is_valid():
             # Save the user and return success response
             serializer.save()

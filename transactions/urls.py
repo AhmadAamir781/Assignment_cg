@@ -1,9 +1,9 @@
 
 from django.urls import path
-from .views import PostTransactionView,RetrieveUserTransactionsByTimestampView
+from .views import TransactionView,RetrieveUserTransactionsByTimestampView
 urlpatterns = [
-    path('Transactions/', PostTransactionView.as_view(), name="transactions"),
-    path('Transactions/<int:user_id>/', PostTransactionView.as_view(), name="transactionsUser"),
-    path('Transactions/<int:user_id>/<str:start_timestamp>/<str:end_timestamp>/', RetrieveUserTransactionsByTimestampView.as_view(), name="rUsertransbytime"),
+    path('transactions/', TransactionView.as_view(), name="transactions"),
+    path('transactions/<int:user_id>/', TransactionView.as_view(), name="transactionsUser"),
+    path('transactions/<int:user_id>/<str:start_timestamp>/<str:end_timestamp>/', RetrieveUserTransactionsByTimestampView.as_view(), name="rUsertransbytime"),
 ]
     

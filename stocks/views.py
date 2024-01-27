@@ -4,7 +4,7 @@ from rest_framework import status
 from .serializers import StockDataSerializer
 from .models import StockData
 
-class RetrieveStockDataView(APIView):
+class StockDataView(APIView):
     """
     API view for retrieving and ingesting stock data.
     """
