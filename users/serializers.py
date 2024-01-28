@@ -12,9 +12,14 @@ class UserSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         # Check if a user with the same email already exists
-        existing_email_user = CustomUser.objects.filter(email=data['email'] , username = data['username']).first()
+        existing_email_user = CustomUser.objects.filter(email=data['email']).first()
+        existing_username_user = CustomUser.objects.filter(username = data['username']).first()
         if existing_email_user:
-            raise serializers.ValidationError({'email': 'A user with this email or username already exists.'})
+            raise serializers.ValidationError({'email': 'A user with this email  already exists.'})
+        if existing_username_user:
+            raise serializers.ValidationError({'email': 'A user with this  username already exists.'})
+        if data['balance'] <= 0:
+            raise serializers.ValidationError({'error': 'User balance must be greater then zeo'})
         return data
     
     

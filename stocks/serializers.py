@@ -6,7 +6,7 @@ class StockDataSerializer(serializers.ModelSerializer):
     close_price = serializers.DecimalField(max_digits=10 , decimal_places=2,required = True)
     high = serializers.DecimalField(max_digits=10 , decimal_places=2,required = True)
     low = serializers.DecimalField(max_digits=10 , decimal_places=2,required = True)
-    Volume = serializers.DecimalField(max_digits=10 , decimal_places=2,required = True)
+    volume = serializers.DecimalField(max_digits=10 , decimal_places=2,required = True)
     class Meta:
         model = StockData
         fields = '__all__'

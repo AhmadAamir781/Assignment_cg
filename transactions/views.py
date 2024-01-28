@@ -27,10 +27,10 @@ class TransactionView(APIView):
 
     def get(self, request, user_id):
         # Retrieve user transactions
-        user = CustomUser.objects.filter(id=user_id).first()
-        transactions = Transactions.objects.filter(user=user)
-        print(transactions)
-        return Response({"Transactions": transactions}, status=status.HTTP_200_OK)
+        
+        transactions = Transactions.objects.filter(user__id=user_id)
+        serializer = TransactionsSerializer(transactions, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
 class RetrieveUserTransactionsByTimestampView(APIView):
     """

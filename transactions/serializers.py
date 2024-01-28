@@ -48,7 +48,7 @@ class TransactionsSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError("Insufficient balance for the transaction.")
 
         # Create and return the Transactions instance
-        transaction = Transactions(
+        transaction = Transactions.objects.create(
             user=user,
             ticker=stock_data,
             transaction_price=transaction_price,
@@ -60,7 +60,7 @@ class TransactionsSerializer(serializers.ModelSerializer):
         if validated_data['transaction_type'] == 'buy':
             user.balance = float(user.balance) -  float(transaction_price)
         elif validated_data['transaction_type'] == 'sell':
-            user.balance += float(user.balance) + float(transaction_price)
+            user.balance = float(user.balance) + float(transaction_price)
         user.save()
 
         return transaction
